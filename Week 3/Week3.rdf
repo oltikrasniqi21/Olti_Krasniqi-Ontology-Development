@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3/"
+     xml:base="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#appliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#appliesTo">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#connectsLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#connectsLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Transport"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#consistsOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#consistsOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#containsTool -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#containsTool">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#executedOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#executedOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#hasRoute -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#hasRoute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#occursOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#occursOn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#requiresSetup -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#requiresSetup">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Setup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#batching_tool -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#batching_tool">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#cascading_tool -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#cascading_tool">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#dispatching_ranking -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#dispatching_ranking">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#down_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#down_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#lots_per_release -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#lots_per_release">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mt_before_pm -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mt_before_pm">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttf -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttr -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttr">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#number_of_tools -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#number_of_tools">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#pm_type -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#pm_type">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#priority -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#priority">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_mean -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_mean">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_offset -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_offset">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#productName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#productName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#rework_probability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#rework_probability">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#step_number -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#step_number">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#super_hot_lot -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#super_hot_lot">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#ttr_mean -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#ttr_mean">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#wafers_per_lot -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#wafers_per_lot">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#10080 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#10080">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Setup -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Setup"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Transport -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Transport"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#batching_tool -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#batching_tool">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#cascading_tool -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#cascading_tool">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#dispatching_ranking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#dispatching_ranking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#down_type -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#down_type">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#lots_per_release -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#lots_per_release">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mt_before_pm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mt_before_pm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttf -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttr -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#mttr">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#number_of_tools -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#number_of_tools">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#pm_type -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#pm_type">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#priority -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#priority">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_mean -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_mean">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_offset -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#processing_time_offset">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#product_Name -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#product_Name">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#rework_probability -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#rework_probability">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#step_number -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#step_number">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#super_hot_lot -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#super_hot_lot">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#ttr_mean -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#ttr_mean">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#wafers_per_lot -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#wafers_per_lot">
+        <rdf:type rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
