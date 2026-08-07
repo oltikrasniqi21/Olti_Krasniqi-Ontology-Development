@@ -296,43 +296,64 @@
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Breakdown_Event">
+        <rdfs:comment>Represents an unexpected tool failure or breakdown that temporarily stops production.</rdfs:comment>
+        <rdfs:label>Breakdown Event</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Lot">
+        <rdfs:comment>Represents a specific physical batch of wafers moving through the factory together</rdfs:comment>
+        <rdfs:label>Lot</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#PM_Event">
+        <rdfs:comment>Represents a scheduled preventive maintenance activity designed to keep tools running reliably</rdfs:comment>
+        <rdfs:label>Preventive Maintenance Event</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Process_Step">
+        <rdfs:comment>A manufacturing activity that represents a specific operation performed during the production process to transform inputs into outputs.</rdfs:comment>
+        <rdfs:label>Process Step</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Product">
+        <rdfs:comment>Represents an individual manufacturing operation or step along a product&apos;s route.</rdfs:comment>
+        <rdfs:label>Product</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Route">
+        <rdfs:comment>Specifies the step-by-step process sequence required to build a product.</rdfs:comment>
+        <rdfs:label>Route</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Setup -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Setup"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Setup">
+        <rdfs:comment>Defines a process step&apos;s required operating configuration and the setup time needed to switch between product types</rdfs:comment>
+        <rdfs:label>Setup</rdfs:label>
+    </owl:Class>
     
 
 
@@ -340,19 +361,27 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+        <rdfs:comment>Represents a single physical tool or machine in the manufacturing plant.</rdfs:comment>
+        <rdfs:label>Tool</rdfs:label>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Tool_Group">
+        <rdfs:comment>A collection or category of manufacturing tools or equipment that perform similar functions or are used for related production operations.</rdfs:comment>
+        <rdfs:label>Tool Group</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Transport -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Transport"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/oltipc/ontologies/2026/7/Infenion-week3#Transport">
+        <rdfs:comment>Defines the travel time and logistical movement of wafer lots between different tool locations.</rdfs:comment>
+        <rdfs:label>Transport</rdfs:label>
+    </owl:Class>
     
 
 
