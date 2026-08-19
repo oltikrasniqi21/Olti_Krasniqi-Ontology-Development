@@ -225,8 +225,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                 rdfs:subPropertyOf owl:topDataProperty ;
                 rdfs:domain :Process_Steps ;
                 rdfs:range xsd:float ;
-                rdfs:comment "Precursor or carrier gas flow rate setpoint in sccm." ;
-                rdfs:label "has gas flow rate" .
+                rdfs:comment "Precursor or carrier gas flow rate setpoint in sccm." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasLeakageCurrentDensity
@@ -238,8 +237,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                                                     )
                                       ] ;
                           rdfs:range xsd:float ;
-                          rdfs:comment "Leakage current density measured in A/cm²." ;
-                          rdfs:label "has leakage current density" .
+                          rdfs:comment "Leakage current density measured in A/cm²." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasPressure
@@ -247,8 +245,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
              rdfs:subPropertyOf owl:topDataProperty ;
              rdfs:domain :Process_Steps ;
              rdfs:range xsd:float ;
-             rdfs:comment "Process chamber pressure setpoint in Torr or mBar." ;
-             rdfs:label "has pressure" .
+             rdfs:comment "Process chamber pressure setpoint in Torr or mBar." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasRFPower
@@ -256,8 +253,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
             rdfs:subPropertyOf owl:topDataProperty ;
             rdfs:domain :Process_Steps ;
             rdfs:range xsd:float ;
-            rdfs:comment "Plasma RF power delivery in Watts." ;
-            rdfs:label "has RF power" .
+            rdfs:comment "Plasma RF power delivery in Watts." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasRemnantPolarization
@@ -269,8 +265,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                                                   )
                                     ] ;
                         rdfs:range xsd:float ;
-                        rdfs:comment "Remnant polarization (Pr) in µC/cm²." ;
-                        rdfs:label "has remnant polarization" .
+                        rdfs:comment "Remnant polarization (Pr) in µC/cm²." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasSurfaceRoughness
@@ -282,8 +277,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                                                )
                                  ] ;
                      rdfs:range xsd:float ;
-                     rdfs:comment "RMS surface roughness (Sq/Sa) measured in nm." ;
-                     rdfs:label "has surface roughness" .
+                     rdfs:comment "RMS surface roughness (Sq/Sa) measured in nm." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasTemperature
@@ -291,8 +285,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                 rdfs:subPropertyOf owl:topDataProperty ;
                 rdfs:domain :Process_Steps ;
                 rdfs:range xsd:float ;
-                rdfs:comment "Process execution temperature in °C." ;
-                rdfs:label "has temperature" .
+                rdfs:comment "Process execution temperature in °C." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/isCMOSCompatible
@@ -300,8 +293,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain :Material ;
                   rdfs:range xsd:boolean ;
-                  rdfs:comment "Boolean flag indicating thermal/chemical compatibility with CMOS processes." ;
-                  rdfs:label "is CMOS compatible" .
+                  rdfs:comment "Boolean flag indicating thermal/chemical compatibility with CMOS processes." .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/isPassed
@@ -309,8 +301,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
           rdfs:subPropertyOf owl:topDataProperty ;
           rdfs:domain :Quality_Check ;
           rdfs:range xsd:boolean ;
-          rdfs:comment "Pass/Fail evaluation result flag for physical or electrical checks." ;
-          rdfs:label "is passed" .
+          rdfs:comment "Pass/Fail evaluation result flag for physical or electrical checks." .
 
 
 #################################################################
@@ -321,7 +312,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :ALDSystem rdf:type owl:Class ;
            rdfs:subClassOf :Equipment ;
            rdfs:comment "Atomic Layer Deposition cluster system." ;
-           rdfs:label "ALDSystem" .
+           rdfs:label "ALD_System" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Annealing
@@ -335,35 +326,35 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :CMPTool rdf:type owl:Class ;
          rdfs:subClassOf :Equipment ;
          rdfs:comment "Chemical Mechanical Planarization polishing system." ;
-         rdfs:label "CMPTool" .
+         rdfs:label "CMP_Tool" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/CMP_Step
 :CMP_Step rdf:type owl:Class ;
           rdfs:subClassOf :Process_Steps ;
           rdfs:comment "Chemical Mechanical Planarization polishing step." ;
-          rdfs:label "CMP Step" .
+          rdfs:label "CMP_Step" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Capacitor_Stack
 :Capacitor_Stack rdf:type owl:Class ;
                  rdfs:subClassOf :Output ;
                  rdfs:comment "Metal-Insulator-Metal (MIM) ferroelectric capacitor stack entity." ;
-                 rdfs:label "CapacitorStack" .
+                 rdfs:label "Capacitor_Stack" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Deposition_Step
 :Deposition_Step rdf:type owl:Class ;
                  rdfs:subClassOf :Process_Steps ;
                  rdfs:comment "Generalized material film growth or deposition process step." ;
-                 rdfs:label "DepositionStep" .
+                 rdfs:label "Deposition_Step" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/DielectricMaterial
 :DielectricMaterial rdf:type owl:Class ;
                     rdfs:subClassOf :Material ;
                     rdfs:comment "Non-conductive insulating oxides or nitrides." ;
-                    rdfs:label "DielectricMaterial" .
+                    rdfs:label "Dielectric_Material" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/ElectricalCharacterization
@@ -378,14 +369,14 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :ElectrodeMaterial rdf:type owl:Class ;
                    rdfs:subClassOf :Material ;
                    rdfs:comment "Conductive materials used for top/bottom capacitor plates and plugs." ;
-                   rdfs:label "ElectrodeMaterial" .
+                   rdfs:label "Electrode_Material" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Electrode_Deposition
 :Electrode_Deposition rdf:type owl:Class ;
                       rdfs:subClassOf :Process_Steps ;
                       rdfs:comment "Process step specifically depositing conductive electrode films." ;
-                      rdfs:label "ElectrodeDeposition" .
+                      rdfs:label "Electrode_Deposition" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Equipment
@@ -398,7 +389,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :Etch_Step rdf:type owl:Class ;
            rdfs:subClassOf :Process_Steps ;
            rdfs:comment "Subtractive material removal step via wet chemical or plasma etching." ;
-           rdfs:label "EtchStep" .
+           rdfs:label "Etch_Step" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Etcher
@@ -413,14 +404,14 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
                        rdfs:subClassOf :Material ;
                        owl:disjointWith :SemiconductorMaterial ;
                        rdfs:comment "Polarizable dielectric material exhibiting remnant polarization." ;
-                       rdfs:label "FerroelectricMaterial" .
+                       rdfs:label "Ferroelectric_Material" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Ferroelectric_Memory
 :Ferroelectric_Memory rdf:type owl:Class ;
                       rdfs:subClassOf :Output ;
                       rdfs:comment "Complete packaged integrated FeRAM chip or die assembly." ;
-                      rdfs:label "FerroelectricMemory" .
+                      rdfs:label "Ferroelectric_Memory" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Furnace
@@ -434,7 +425,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :HfO2_Deposition rdf:type owl:Class ;
                  rdfs:subClassOf :Process_Steps ;
                  rdfs:comment "Atomic Layer Deposition step specifically growing HfO2-based dielectric films." ;
-                 rdfs:label "HfO2 Deposition" .
+                 rdfs:label "HfO2_Deposition" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Implantation
@@ -455,7 +446,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :LithographyTool rdf:type owl:Class ;
                  rdfs:subClassOf :Equipment ;
                  rdfs:comment "Photolithographic exposure stepper or scanner tool." ;
-                 rdfs:label "LithographyTool" .
+                 rdfs:label "Lithography_Tool" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Material
@@ -468,14 +459,14 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :Memory_Array rdf:type owl:Class ;
               rdfs:subClassOf :Output ;
               rdfs:comment "Structured matrix array containing interconnected bit-cells." ;
-              rdfs:label "MemoryArray" .
+              rdfs:label "Memory_Array" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Memory_Cell
 :Memory_Cell rdf:type owl:Class ;
              rdfs:subClassOf :Output ;
              rdfs:comment "Single 1T1C or 2T2C functional unit cell." ;
-             rdfs:label "MemoryCell" .
+             rdfs:label "Memory_Cell" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Metallization
@@ -502,14 +493,14 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :PVDSystem rdf:type owl:Class ;
            rdfs:subClassOf :Equipment ;
            rdfs:comment "Physical Vapor Deposition sputtering tool." ;
-           rdfs:label "PVDSystem" .
+           rdfs:label "PVD_System" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/PhotoresistMaterial
 :PhotoresistMaterial rdf:type owl:Class ;
                      rdfs:subClassOf :Material ;
                      rdfs:comment "Light-sensitive organic polymeric materials used in lithography." ;
-                     rdfs:label "PhotoresistMaterial" .
+                     rdfs:label "Photoresist_Material" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/PhysicalMetrology
@@ -522,27 +513,27 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Process_Steps
 :Process_Steps rdf:type owl:Class ;
                rdfs:comment "Base class covering individual unit processing steps." ;
-               rdfs:label "Process Steps" .
+               rdfs:label "Process_Steps" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Quality_Check
 :Quality_Check rdf:type owl:Class ;
                rdfs:comment "Base class for process inspection and metrology routines." ;
-               rdfs:label "Quality Check" .
+               rdfs:label "Quality_Check" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/SemiconductorMaterial
 :SemiconductorMaterial rdf:type owl:Class ;
                        rdfs:subClassOf :Material ;
                        rdfs:comment "Substrate or active layer materials such as Silicon or Germanium." ;
-                       rdfs:label "SemiconductorMaterial" .
+                       rdfs:label "Semiconductor_Material" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/SubstrateMaterial
 :SubstrateMaterial rdf:type owl:Class ;
                    rdfs:subClassOf :Material ;
                    rdfs:comment "Base wafer material providing structural support." ;
-                   rdfs:label "SubstrateMaterial" .
+                   rdfs:label "Substrate_Material" .
 
 
 ###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Testing
@@ -556,7 +547,7 @@ device, while the ferroelectric capacitor (FeCAP) provides the non-volatile stor
 :Wafer_Cleaning rdf:type owl:Class ;
                 rdfs:subClassOf :Process_Steps ;
                 rdfs:comment "Surface preparation and contamination removal step." ;
-                rdfs:label "Wafer Cleaning" .
+                rdfs:label "Wafer_Cleaning" .
 
 
 #################################################################
