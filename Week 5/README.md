@@ -6,7 +6,7 @@ This ontology formalizes manufacturing process flow of CMOS Steps in FeRAM produ
 In the 1T1C architecture, the CMOS transistor acts as the access or selection
 device, while the ferroelectric capacitor (FeCAP) provides the non-volatile storage element.
 
-### Visualization
+## Visualization
 https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/oltikrasniqi21/Olti_Krasniqi-Ontology-Development/refs/heads/main/Week%205/FeRAM%20Formalling.ttl
 
 ## Ontology Details
