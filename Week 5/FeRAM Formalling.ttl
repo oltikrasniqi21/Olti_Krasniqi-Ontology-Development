@@ -6,583 +6,899 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/> .
 
-<http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling> rdf:type owl:Ontology .
+<http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling> rdf:type owl:Ontology ;
+                                                                        rdfs:comment """This ontology formalizes manufacturing process flow of CMOS Steps in FeRAM production. 
+In the 1T1C architecture, the CMOS transistor acts as the access or selection
+device, while the ferroelectric capacitor (FeCAP) provides the non-volatile storage element.""" .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-:followedBy a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range :Process_Steps ;
-    rdfs:label "followed by" ;
-    rdfs:comment "Defines execution sequence order between consecutive process steps." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/characterizesMaterial
+:characterizesMaterial rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty ;
+                       rdfs:domain :Quality_Check ;
+                       rdfs:range :Material ;
+                       rdfs:comment "Links quality checks to target materials under evaluation." ;
+                       rdfs:label "characterizes material" .
 
-:depositsMaterial a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Deposition_Step ;
-    rdfs:range :Material ;
-    rdfs:label "deposits material" ;
-    rdfs:comment "Relates a deposition step to the material thin film laid down." .
 
-:consumesChemical a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Etch_Step :Wafer_Cleaning :CMP_Step) ] ;
-    rdfs:range :Material ;
-    rdfs:label "consumes chemical" ;
-    rdfs:comment "Relates a chemical, etching, or cleaning step to constituent materials used." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/characterizesStep
+:characterizesStep rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :Quality_Check ;
+                   rdfs:range :Process_Steps ;
+                   rdfs:comment "Links physical or electrical inspection routines to process steps." ;
+                   rdfs:label "characterizes step" .
 
-:formsOutputPart a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Electrode_Deposition :HfO2_Deposition :Metallization) ] ;
-    rdfs:range :Output ;
-    rdfs:label "forms output part" ;
-    rdfs:comment "Links constructive process steps to structural output components created." .
 
-:modifiesOutputPart a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Annealing :Oxidation :Implantation) ] ;
-    rdfs:range :Output ;
-    rdfs:label "modifies output part" ;
-    rdfs:comment "Links structural altering steps like annealing or doping to output parts." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/consumesChemical
+:consumesChemical rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :CMP_Step
+                                              :Etch_Step
+                                              :Wafer_Cleaning
+                                            )
+                              ] ;
+                  rdfs:range :Material ;
+                  rdfs:comment "Relates a chemical, etching, or cleaning step to constituent materials used." ;
+                  rdfs:label "consumes chemical" .
 
-:characterizesStep a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Quality_Check ;
-    rdfs:range :Process_Steps ;
-    rdfs:label "characterizes step" ;
-    rdfs:comment "Links physical or electrical inspection routines to process steps." .
 
-:characterizesMaterial a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Quality_Check ;
-    rdfs:range :Material ;
-    rdfs:label "characterizes material" ;
-    rdfs:comment "Links quality checks to target materials under evaluation." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/depositsMaterial
+:depositsMaterial rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Deposition_Step ;
+                  rdfs:range :Material ;
+                  rdfs:comment "Relates a deposition step to the material thin film laid down." ;
+                  rdfs:label "deposits material" .
 
-:isPartOfOutput a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Output ;
-    rdfs:range :Output ;
-    rdfs:label "is part of output" ;
-    rdfs:comment "Hierarchy relation modeling components within higher-level assemblies." .
 
-:hasSubmodule a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range :Process_Steps ;
-    rdfs:label "has submodule" ;
-    rdfs:comment "Models sub-process steps embedded inside larger modular sequences." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/followedBy
+:followedBy rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Process_Steps ;
+            rdfs:range :Process_Steps ;
+            rdfs:comment "Defines execution sequence order between consecutive process steps." ;
+            rdfs:label "followed by" .
 
-:produces a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range :Output ;
-    rdfs:label "produces" ;
-    rdfs:comment "Relates process execution to final target output items." .
 
-:usesEquipment a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range :Equipment ;
-    rdfs:label "uses equipment" ;
-    rdfs:comment "Maps fabrication process steps to equipment tools required." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/formsOutputPart
+:formsOutputPart rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Electrode_Deposition
+                                             :HfO2_Deposition
+                                             :Metallization
+                                           )
+                             ] ;
+                 rdfs:range :Output ;
+                 rdfs:comment "Links constructive process steps to structural output components created." ;
+                 rdfs:label "forms output part" .
 
-:usesMaterial a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range :Material ;
-    rdfs:label "maps process steps to raw or consumable materials utilized." .
 
-:validates a owl:ObjectProperty ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    rdfs:domain :Quality_Check ;
-    rdfs:range :Output ;
-    rdfs:label "validates" ;
-    rdfs:comment "Links inspection procedures to component structures being validated." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasSubmodule
+:hasSubmodule rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Process_Steps ;
+              rdfs:range :Process_Steps ;
+              rdfs:comment "Models sub-process steps embedded inside larger modular sequences." ;
+              rdfs:label "has submodule" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/isPartOfOutput
+:isPartOfOutput rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Output ;
+                rdfs:range :Output ;
+                rdfs:comment "Hierarchy relation modeling components within higher-level assemblies." ;
+                rdfs:label "is part of output" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/modifiesOutputPart
+:modifiesOutputPart rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Annealing
+                                                :Implantation
+                                                :Oxidation
+                                              )
+                                ] ;
+                    rdfs:range :Output ;
+                    rdfs:comment "Links structural altering steps like annealing or doping to output parts." ;
+                    rdfs:label "modifies output part" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/produces
+:produces rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Process_Steps ;
+          rdfs:range :Output ;
+          rdfs:comment "Relates process execution to final target output items." ;
+          rdfs:label "produces" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/usesEquipment
+:usesEquipment rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Process_Steps ;
+               rdfs:range :Equipment ;
+               rdfs:comment "Maps fabrication process steps to equipment tools required." ;
+               rdfs:label "uses equipment" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/usesMaterial
+:usesMaterial rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Process_Steps ;
+              rdfs:range :Material ;
+              rdfs:label "maps process steps to raw or consumable materials utilized." .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/validates
+:validates rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Quality_Check ;
+           rdfs:range :Output ;
+           rdfs:comment "Links inspection procedures to component structures being validated." ;
+           rdfs:label "validates" .
+
+
 #################################################################
-#    Data Properties
+#    Data properties
 #################################################################
 
-:hasTemperature a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range xsd:float ;
-    rdfs:label "has temperature" ;
-    rdfs:comment "Process execution temperature in °C." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasBreakdownField
+:hasBreakdownField rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Capacitor_Stack
+                                               :FerroelectricMaterial
+                                             )
+                               ] ;
+                   rdfs:range xsd:float ;
+                   rdfs:comment "Dielectric breakdown electric field strength (Ebd) in MV/cm." ;
+                   rdfs:label "has breakdown field" .
 
-:hasDuration a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range xsd:float ;
-    rdfs:label "has duration" ;
-    rdfs:comment "Process execution time in seconds." .
 
-:hasFilmThickness a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Material :Output) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has film thickness" ;
-    rdfs:comment "Film or layer thickness measured in nm." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasCoerciveField
+:hasCoerciveField rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Capacitor_Stack
+                                              :FerroelectricMaterial
+                                            )
+                              ] ;
+                  rdfs:range xsd:float ;
+                  rdfs:comment "Coercive electric field (Ec) in kV/cm." ;
+                  rdfs:label "has coercive field" .
 
-:hasRemnantPolarization a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:FerroelectricMaterial :Capacitor_Stack) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has remnant polarization" ;
-    rdfs:comment "Remnant polarization (Pr) in µC/cm²." .
 
-:hasCoerciveField a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:FerroelectricMaterial :Capacitor_Stack) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has coercive field" ;
-    rdfs:comment "Coercive electric field (Ec) in kV/cm." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasCriticalDimension
+:hasCriticalDimension rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( :Output
+                                                  :Process_Steps
+                                                )
+                                  ] ;
+                      rdfs:range xsd:float ;
+                      rdfs:comment "Target critical dimension (CD) or linewidth pitch in nm." ;
+                      rdfs:label "has critical dimension" .
 
-:hasDopingConcentration a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:SemiconductorMaterial :FerroelectricMaterial) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has doping concentration" ;
-    rdfs:comment "Doping concentration percentage or atomic concentration." .
 
-:isCMOSCompatible a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Material ;
-    rdfs:range xsd:boolean ;
-    rdfs:label "is CMOS compatible" ;
-    rdfs:comment "Boolean flag indicating thermal/chemical compatibility with CMOS processes." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasDopingConcentration
+:hasDopingConcentration rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :FerroelectricMaterial
+                                                    :SemiconductorMaterial
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:float ;
+                        rdfs:comment "Doping concentration percentage or atomic concentration." ;
+                        rdfs:label "has doping concentration" .
 
-:isPassed a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Quality_Check ;
-    rdfs:range xsd:boolean ;
-    rdfs:label "is passed" ;
-    rdfs:comment "Pass/Fail evaluation result flag for physical or electrical checks." .
 
-:hasPressure a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range xsd:float ;
-    rdfs:label "has pressure" ;
-    rdfs:comment "Process chamber pressure setpoint in Torr or mBar." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasDuration
+:hasDuration rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Process_Steps ;
+             rdfs:range xsd:float ;
+             rdfs:comment "Process execution time in seconds." ;
+             rdfs:label "has duration" .
 
-:hasGasFlowRate a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range xsd:float ;
-    rdfs:label "has gas flow rate" ;
-    rdfs:comment "Precursor or carrier gas flow rate setpoint in sccm." .
 
-:hasRFPower a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain :Process_Steps ;
-    rdfs:range xsd:float ;
-    rdfs:label "has RF power" ;
-    rdfs:comment "Plasma RF power delivery in Watts." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasEnduranceCycles
+:hasEnduranceCycles rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Capacitor_Stack
+                                                :Memory_Array
+                                                :Memory_Cell
+                                              )
+                                ] ;
+                    rdfs:range xsd:integer ;
+                    rdfs:comment "Maximum allowable switching write cycles prior to fatigue failure." ;
+                    rdfs:label "has endurance cycles" .
 
-:hasEnduranceCycles a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Capacitor_Stack :Memory_Cell :Memory_Array) ] ;
-    rdfs:range xsd:integer ;
-    rdfs:label "has endurance cycles" ;
-    rdfs:comment "Maximum allowable switching write cycles prior to fatigue failure." .
 
-:hasLeakageCurrentDensity a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:FerroelectricMaterial :Capacitor_Stack) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has leakage current density" ;
-    rdfs:comment "Leakage current density measured in A/cm²." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasFilmThickness
+:hasFilmThickness rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Material
+                                              :Output
+                                            )
+                              ] ;
+                  rdfs:range xsd:float ;
+                  rdfs:comment "Film or layer thickness measured in nm." ;
+                  rdfs:label "has film thickness" .
 
-:hasBreakdownField a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:FerroelectricMaterial :Capacitor_Stack) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has breakdown field" ;
-    rdfs:comment "Dielectric breakdown electric field strength (Ebd) in MV/cm." .
 
-:hasCriticalDimension a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Process_Steps :Output) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has critical dimension" ;
-    rdfs:comment "Target critical dimension (CD) or linewidth pitch in nm." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasGasFlowRate
+:hasGasFlowRate rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Process_Steps ;
+                rdfs:range xsd:float ;
+                rdfs:comment "Precursor or carrier gas flow rate setpoint in sccm." ;
+                rdfs:label "has gas flow rate" .
 
-:hasSurfaceRoughness a owl:DatatypeProperty ;
-    rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf (:Material :Output) ] ;
-    rdfs:range xsd:float ;
-    rdfs:label "has surface roughness" ;
-    rdfs:comment "RMS surface roughness (Sq/Sa) measured in nm." .
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasLeakageCurrentDensity
+:hasLeakageCurrentDensity rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( :Capacitor_Stack
+                                                      :FerroelectricMaterial
+                                                    )
+                                      ] ;
+                          rdfs:range xsd:float ;
+                          rdfs:comment "Leakage current density measured in A/cm²." ;
+                          rdfs:label "has leakage current density" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasPressure
+:hasPressure rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Process_Steps ;
+             rdfs:range xsd:float ;
+             rdfs:comment "Process chamber pressure setpoint in Torr or mBar." ;
+             rdfs:label "has pressure" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasRFPower
+:hasRFPower rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :Process_Steps ;
+            rdfs:range xsd:float ;
+            rdfs:comment "Plasma RF power delivery in Watts." ;
+            rdfs:label "has RF power" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasRemnantPolarization
+:hasRemnantPolarization rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( :Capacitor_Stack
+                                                    :FerroelectricMaterial
+                                                  )
+                                    ] ;
+                        rdfs:range xsd:float ;
+                        rdfs:comment "Remnant polarization (Pr) in µC/cm²." ;
+                        rdfs:label "has remnant polarization" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasSurfaceRoughness
+:hasSurfaceRoughness rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Material
+                                                 :Output
+                                               )
+                                 ] ;
+                     rdfs:range xsd:float ;
+                     rdfs:comment "RMS surface roughness (Sq/Sa) measured in nm." ;
+                     rdfs:label "has surface roughness" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/hasTemperature
+:hasTemperature rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdfs:domain :Process_Steps ;
+                rdfs:range xsd:float ;
+                rdfs:comment "Process execution temperature in °C." ;
+                rdfs:label "has temperature" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/isCMOSCompatible
+:isCMOSCompatible rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Material ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Boolean flag indicating thermal/chemical compatibility with CMOS processes." ;
+                  rdfs:label "is CMOS compatible" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/isPassed
+:isPassed rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Quality_Check ;
+          rdfs:range xsd:boolean ;
+          rdfs:comment "Pass/Fail evaluation result flag for physical or electrical checks." ;
+          rdfs:label "is passed" .
+
+
 #################################################################
 #    Classes
 #################################################################
 
-:Equipment a owl:Class ;
-    rdfs:label "Equipment" ;
-    rdfs:comment "Base class representing fabrication tools and machinery." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/ALDSystem
+:ALDSystem rdf:type owl:Class ;
+           rdfs:subClassOf :Equipment ;
+           rdfs:comment "Atomic Layer Deposition cluster system." ;
+           rdfs:label "ALD System" .
 
-:ALDSystem a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    rdfs:label "ALD System" ;
-    rdfs:comment "Atomic Layer Deposition cluster system." .
 
-:CMPTool a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    rdfs:label "CMP Tool" ;
-    rdfs:comment "Chemical Mechanical Planarization polishing system." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Annealing
+:Annealing rdf:type owl:Class ;
+           rdfs:subClassOf :Process_Steps ;
+           rdfs:comment "Thermal annealing step used for crystallization or stress relief." ;
+           rdfs:label "Annealing" .
 
-:Etcher a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    rdfs:label "Etcher" ;
-    rdfs:comment "Plasma Reactive Ion Etch (RIE) system." .
 
-:Furnace a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    rdfs:label "Furnace" ;
-    rdfs:comment "Thermal furnace or Rapid Thermal Annealing (RTA) chamber." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/CMPTool
+:CMPTool rdf:type owl:Class ;
+         rdfs:subClassOf :Equipment ;
+         rdfs:comment "Chemical Mechanical Planarization polishing system." ;
+         rdfs:label "CMP Tool" .
 
-:LithographyTool a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    rdfs:label "Lithography Tool" ;
-    rdfs:comment "Photolithographic exposure stepper or scanner tool." .
 
-:PVDSystem a owl:Class ;
-    rdfs:subClassOf :Equipment ;
-    rdfs:label "PVD System" ;
-    rdfs:comment "Physical Vapor Deposition sputtering tool." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/CMP_Step
+:CMP_Step rdf:type owl:Class ;
+          rdfs:subClassOf :Process_Steps ;
+          rdfs:comment "Chemical Mechanical Planarization polishing step." ;
+          rdfs:label "CMP Step" .
 
-:Process_Steps a owl:Class ;
-    rdfs:label "Process Steps" ;
-    rdfs:comment "Base class covering individual unit processing steps." .
 
-:Annealing a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Annealing" ;
-    rdfs:comment "Thermal annealing step used for crystallization or stress relief." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Capacitor_Stack
+:Capacitor_Stack rdf:type owl:Class ;
+                 rdfs:subClassOf :Output ;
+                 rdfs:comment "Metal-Insulator-Metal (MIM) ferroelectric capacitor stack entity." ;
+                 rdfs:label "Capacitor Stack" .
 
-:CMP_Step a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "CMP Step" ;
-    rdfs:comment "Chemical Mechanical Planarization polishing step." .
 
-:Deposition_Step a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Deposition Step" ;
-    rdfs:comment "Generalized material film growth or deposition process step." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Deposition_Step
+:Deposition_Step rdf:type owl:Class ;
+                 rdfs:subClassOf :Process_Steps ;
+                 rdfs:comment "Generalized material film growth or deposition process step." ;
+                 rdfs:label "Deposition Step" .
 
-:Electrode_Deposition a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Electrode Deposition" ;
-    rdfs:comment "Process step specifically depositing conductive electrode films." .
 
-:Etch_Step a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Etch Step" ;
-    rdfs:comment "Subtractive material removal step via wet chemical or plasma etching." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/DielectricMaterial
+:DielectricMaterial rdf:type owl:Class ;
+                    rdfs:subClassOf :Material ;
+                    rdfs:comment "Non-conductive insulating oxides or nitrides." ;
+                    rdfs:label "Dielectric Material" .
 
-:HfO2_Deposition a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "HfO2 Deposition" ;
-    rdfs:comment "Atomic Layer Deposition step specifically growing HfO2-based dielectric films." .
 
-:Implantation a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Implantation" ;
-    rdfs:comment "Ion implantation step modifying semiconductor carrier concentrations." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/ElectricalCharacterization
+:ElectricalCharacterization rdf:type owl:Class ;
+                            rdfs:subClassOf :Quality_Check ;
+                            owl:disjointWith :PhysicalMetrology ;
+                            rdfs:comment "Metrology assessing C-V, P-V, leakage, and fatigue performance." ;
+                            rdfs:label "Electrical Characterization" .
 
-:Lithography a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Lithography" ;
-    rdfs:comment "Photolithographic pattern transfer onto photoresist films." .
 
-:Metallization a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Metallization" ;
-    rdfs:comment "Patterning and formation of conductive interconnect lines and contacts." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/ElectrodeMaterial
+:ElectrodeMaterial rdf:type owl:Class ;
+                   rdfs:subClassOf :Material ;
+                   rdfs:comment "Conductive materials used for top/bottom capacitor plates and plugs." ;
+                   rdfs:label "Electrode Material" .
 
-:Oxidation a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Oxidation" ;
-    rdfs:comment "Thermal growth of oxide films." .
 
-:Testing a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Testing" ;
-    rdfs:comment "Electrical parametric, wafer-level functional testing step." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Electrode_Deposition
+:Electrode_Deposition rdf:type owl:Class ;
+                      rdfs:subClassOf :Process_Steps ;
+                      rdfs:comment "Process step specifically depositing conductive electrode films." ;
+                      rdfs:label "Electrode Deposition" .
 
-:Wafer_Cleaning a owl:Class ;
-    rdfs:subClassOf :Process_Steps ;
-    rdfs:label "Wafer Cleaning" ;
-    rdfs:comment "Surface preparation and contamination removal step." .
 
-:Material a owl:Class ;
-    rdfs:label "Material" ;
-    rdfs:comment "Base class covering chemical elements, compounds, and gas precursors." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Equipment
+:Equipment rdf:type owl:Class ;
+           rdfs:comment "Base class representing fabrication tools and machinery." ;
+           rdfs:label "Equipment" .
 
-:DielectricMaterial a owl:Class ;
-    rdfs:subClassOf :Material ;
-    rdfs:label "Dielectric Material" ;
-    rdfs:comment "Non-conductive insulating oxides or nitrides." .
 
-:ElectrodeMaterial a owl:Class ;
-    rdfs:subClassOf :Material ;
-    rdfs:label "Electrode Material" ;
-    rdfs:comment "Conductive materials used for top/bottom capacitor plates and plugs." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Etch_Step
+:Etch_Step rdf:type owl:Class ;
+           rdfs:subClassOf :Process_Steps ;
+           rdfs:comment "Subtractive material removal step via wet chemical or plasma etching." ;
+           rdfs:label "Etch Step" .
 
-:FerroelectricMaterial a owl:Class ;
-    rdfs:subClassOf :Material ;
-    rdfs:label "Ferroelectric Material" ;
-    rdfs:comment "Polarizable dielectric material exhibiting remnant polarization." ;
-    owl:disjointWith :SemiconductorMaterial .
 
-:PhotoresistMaterial a owl:Class ;
-    rdfs:subClassOf :Material ;
-    rdfs:label "Photoresist Material" ;
-    rdfs:comment "Light-sensitive organic polymeric materials used in lithography." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Etcher
+:Etcher rdf:type owl:Class ;
+        rdfs:subClassOf :Equipment ;
+        rdfs:comment "Plasma Reactive Ion Etch (RIE) system." ;
+        rdfs:label "Etcher" .
 
-:SemiconductorMaterial a owl:Class ;
-    rdfs:subClassOf :Material ;
-    rdfs:label "Semiconductor Material" ;
-    rdfs:comment "Substrate or active layer materials such as Silicon or Germanium." .
 
-:SubstrateMaterial a owl:Class ;
-    rdfs:subClassOf :Material ;
-    rdfs:label "Substrate Material" ;
-    rdfs:comment "Base wafer material providing structural support." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/FerroelectricMaterial
+:FerroelectricMaterial rdf:type owl:Class ;
+                       rdfs:subClassOf :Material ;
+                       owl:disjointWith :SemiconductorMaterial ;
+                       rdfs:comment "Polarizable dielectric material exhibiting remnant polarization." ;
+                       rdfs:label "Ferroelectric Material" .
 
-:Output a owl:Class ;
-    rdfs:label "Output" ;
-    rdfs:comment "Base class for fabricated physical components and device structures." .
 
-:Capacitor_Stack a owl:Class ;
-    rdfs:subClassOf :Output ;
-    rdfs:label "Capacitor Stack" ;
-    rdfs:comment "Metal-Insulator-Metal (MIM) ferroelectric capacitor stack entity." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Ferroelectric_Memory
+:Ferroelectric_Memory rdf:type owl:Class ;
+                      rdfs:subClassOf :Output ;
+                      rdfs:comment "Complete packaged integrated FeRAM chip or die assembly." ;
+                      rdfs:label "Ferroelectric Memory" .
 
-:Ferroelectric_Memory a owl:Class ;
-    rdfs:subClassOf :Output ;
-    rdfs:label "Ferroelectric Memory" ;
-    rdfs:comment "Complete packaged integrated FeRAM chip or die assembly." .
 
-:Memory_Array a owl:Class ;
-    rdfs:subClassOf :Output ;
-    rdfs:label "Memory Array" ;
-    rdfs:comment "Structured matrix array containing interconnected bit-cells." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Furnace
+:Furnace rdf:type owl:Class ;
+         rdfs:subClassOf :Equipment ;
+         rdfs:comment "Thermal furnace or Rapid Thermal Annealing (RTA) chamber." ;
+         rdfs:label "Furnace" .
 
-:Memory_Cell a owl:Class ;
-    rdfs:subClassOf :Output ;
-    rdfs:label "Memory Cell" ;
-    rdfs:comment "Single 1T1C or 2T2C functional unit cell." .
 
-:Quality_Check a owl:Class ;
-    rdfs:label "Quality Check" ;
-    rdfs:comment "Base class for process inspection and metrology routines." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/HfO2_Deposition
+:HfO2_Deposition rdf:type owl:Class ;
+                 rdfs:subClassOf :Process_Steps ;
+                 rdfs:comment "Atomic Layer Deposition step specifically growing HfO2-based dielectric films." ;
+                 rdfs:label "HfO2 Deposition" .
 
-:ElectricalCharacterization a owl:Class ;
-    rdfs:subClassOf :Quality_Check ;
-    rdfs:label "Electrical Characterization" ;
-    rdfs:comment "Metrology assessing C-V, P-V, leakage, and fatigue performance." ;
-    owl:disjointWith :PhysicalMetrology .
 
-:PhysicalMetrology a owl:Class ;
-    rdfs:subClassOf :Quality_Check ;
-    rdfs:label "Physical Metrology" ;
-    rdfs:comment "Inspection routines measuring film thickness, grain phase, and surface morphology." .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Implantation
+:Implantation rdf:type owl:Class ;
+              rdfs:subClassOf :Process_Steps ;
+              rdfs:comment "Ion implantation step modifying semiconductor carrier concentrations." ;
+              rdfs:label "Implantation" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Lithography
+:Lithography rdf:type owl:Class ;
+             rdfs:subClassOf :Process_Steps ;
+             rdfs:comment "Photolithographic pattern transfer onto photoresist films." ;
+             rdfs:label "Lithography" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/LithographyTool
+:LithographyTool rdf:type owl:Class ;
+                 rdfs:subClassOf :Equipment ;
+                 rdfs:comment "Photolithographic exposure stepper or scanner tool." ;
+                 rdfs:label "Lithography Tool" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Material
+:Material rdf:type owl:Class ;
+          rdfs:comment "Base class covering chemical elements, compounds, and gas precursors." ;
+          rdfs:label "Material" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Memory_Array
+:Memory_Array rdf:type owl:Class ;
+              rdfs:subClassOf :Output ;
+              rdfs:comment "Structured matrix array containing interconnected bit-cells." ;
+              rdfs:label "Memory Array" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Memory_Cell
+:Memory_Cell rdf:type owl:Class ;
+             rdfs:subClassOf :Output ;
+             rdfs:comment "Single 1T1C or 2T2C functional unit cell." ;
+             rdfs:label "Memory Cell" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Metallization
+:Metallization rdf:type owl:Class ;
+               rdfs:subClassOf :Process_Steps ;
+               rdfs:comment "Patterning and formation of conductive interconnect lines and contacts." ;
+               rdfs:label "Metallization" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Output
+:Output rdf:type owl:Class ;
+        rdfs:comment "Base class for fabricated physical components and device structures." ;
+        rdfs:label "Output" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Oxidation
+:Oxidation rdf:type owl:Class ;
+           rdfs:subClassOf :Process_Steps ;
+           rdfs:comment "Thermal growth of oxide films." ;
+           rdfs:label "Oxidation" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/PVDSystem
+:PVDSystem rdf:type owl:Class ;
+           rdfs:subClassOf :Equipment ;
+           rdfs:comment "Physical Vapor Deposition sputtering tool." ;
+           rdfs:label "PVD System" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/PhotoresistMaterial
+:PhotoresistMaterial rdf:type owl:Class ;
+                     rdfs:subClassOf :Material ;
+                     rdfs:comment "Light-sensitive organic polymeric materials used in lithography." ;
+                     rdfs:label "Photoresist Material" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/PhysicalMetrology
+:PhysicalMetrology rdf:type owl:Class ;
+                   rdfs:subClassOf :Quality_Check ;
+                   rdfs:comment "Inspection routines measuring film thickness, grain phase, and surface morphology." ;
+                   rdfs:label "Physical Metrology" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Process_Steps
+:Process_Steps rdf:type owl:Class ;
+               rdfs:comment "Base class covering individual unit processing steps." ;
+               rdfs:label "Process Steps" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Quality_Check
+:Quality_Check rdf:type owl:Class ;
+               rdfs:comment "Base class for process inspection and metrology routines." ;
+               rdfs:label "Quality Check" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/SemiconductorMaterial
+:SemiconductorMaterial rdf:type owl:Class ;
+                       rdfs:subClassOf :Material ;
+                       rdfs:comment "Substrate or active layer materials such as Silicon or Germanium." ;
+                       rdfs:label "Semiconductor Material" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/SubstrateMaterial
+:SubstrateMaterial rdf:type owl:Class ;
+                   rdfs:subClassOf :Material ;
+                   rdfs:comment "Base wafer material providing structural support." ;
+                   rdfs:label "Substrate Material" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Testing
+:Testing rdf:type owl:Class ;
+         rdfs:subClassOf :Process_Steps ;
+         rdfs:comment "Electrical parametric, wafer-level functional testing step." ;
+         rdfs:label "Testing" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Wafer_Cleaning
+:Wafer_Cleaning rdf:type owl:Class ;
+                rdfs:subClassOf :Process_Steps ;
+                rdfs:comment "Surface preparation and contamination removal step." ;
+                rdfs:label "Wafer Cleaning" .
+
 
 #################################################################
-#    General Axioms
+#    Individuals
 #################################################################
 
-[ a owl:AllDisjointClasses ;
-  owl:members ( :ALDSystem :CMPTool :Etcher :Furnace :LithographyTool :PVDSystem )
-] .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling#SiDoped_HfO2_Film_10nm
+:SiDoped_HfO2_Film_10nm rdf:type owl:NamedIndividual ,
+                                 :FerroelectricMaterial .
 
-[ a owl:AllDisjointClasses ;
-  owl:members ( :Annealing :CMP_Step :Deposition_Step :Etch_Step :Implantation :Lithography :Metallization :Oxidation :Testing :Wafer_Cleaning )
-] .
 
-[ a owl:AllDisjointClasses ;
-  owl:members ( :Capacitor_Stack :Ferroelectric_Memory :Memory_Array :Memory_Cell )
-] .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/ASML_EUV_Stepper
+:ASML_EUV_Stepper rdf:type owl:NamedIndividual ,
+                           :LithographyTool ;
+                  rdfs:comment "Extreme Ultraviolet (EUV) photolithography exposure tool." ;
+                  rdfs:label "ASML EUV Stepper" .
 
-[ a owl:AllDisjointClasses ;
-  owl:members ( :DielectricMaterial :ElectrodeMaterial :FerroelectricMaterial :PhotoresistMaterial :SemiconductorMaterial :SubstrateMaterial )
-] .
 
-[ a owl:AllDisjointClasses ;
-  owl:members ( :Equipment :Material :Output :Process_Steps :Quality_Check )
-] .
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Al2O3_Capping_Layer
+:Al2O3_Capping_Layer rdf:type owl:NamedIndividual ,
+                              :DielectricMaterial ;
+                     rdfs:comment "Thin aluminum oxide protective oxygen-barrier layer." ;
+                     rdfs:label "Al2O3 Capping Layer" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/AppliedMaterials_CMP_Polisher
+:AppliedMaterials_CMP_Polisher rdf:type owl:NamedIndividual ,
+                                        :CMPTool ;
+                               rdfs:comment "Chemical mechanical planarization wafer polisher." ;
+                               rdfs:label "Applied Materials CMP Polisher" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/AppliedMaterials_PVD_Sputter
+:AppliedMaterials_PVD_Sputter rdf:type owl:NamedIndividual ,
+                                       :PVDSystem ;
+                              rdfs:comment "Magnetron sputtering PVD tool for conductive electrode films." ;
+                              rdfs:label "Applied Materials PVD Sputter" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Array_64Kb_FeRAM
+:Array_64Kb_FeRAM rdf:type owl:NamedIndividual ,
+                           :Memory_Array ;
+                  :isPartOfOutput :Packaged_FeRAM_Chip ;
+                  rdfs:comment "64-Kilobit addressable memory bit array." ;
+                  rdfs:label "Array 64Kb FeRAM" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Beneq_ALD_Cluster_01
+:Beneq_ALD_Cluster_01 rdf:type owl:NamedIndividual ,
+                               :ALDSystem ;
+                      rdfs:comment "Thermal and plasma-assisted atomic layer deposition cluster system." ;
+                      rdfs:label "Beneq ALD Cluster 01" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/C_V_Capacitance_Measurement
+:C_V_Capacitance_Measurement rdf:type owl:NamedIndividual ,
+                                      :ElectricalCharacterization ;
+                             :validates :Single_1T1C_Bit_Cell ;
+                             rdfs:comment "Capacitance-Voltage sweep verifying dielectric constant and switching voltage." ;
+                             rdfs:label "C-V Capacitance Measurement" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/EUV_Photoresist_Positive
+:EUV_Photoresist_Positive rdf:type owl:NamedIndividual ,
+                                   :PhotoresistMaterial ;
+                          rdfs:comment "Positive tone EUV photoresist material." ;
+                          rdfs:label "EUV Photoresist Positive" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/HZO_Film_10nm
+:HZO_Film_10nm rdf:type owl:NamedIndividual ;
+               rdfs:comment "10nm Hafnium Zirconium Oxide (Hf0.5Zr0.5O2) ferroelectric thin film." ;
+               rdfs:label "HZO Film 10nm" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/La_doped_HfO2
+:La_doped_HfO2 rdf:type owl:NamedIndividual ,
+                        :FerroelectricMaterial ;
+               rdfs:comment "Lanthanum-doped HfO2 film for improved endurance." ;
+               rdfs:label "La Doped HfO2" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Lam_Research_RIE_Etcher
+:Lam_Research_RIE_Etcher rdf:type owl:NamedIndividual ,
+                                  :Etcher ;
+                         rdfs:comment "Anisotropic reactive ion etching system." ;
+                         rdfs:label "Lam Research RIE Etcher" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/MIM_Ferroelectric_Capacitor
+:MIM_Ferroelectric_Capacitor rdf:type owl:NamedIndividual ,
+                                      :Capacitor_Stack ;
+                             :isPartOfOutput :Single_1T1C_Bit_Cell ;
+                             rdfs:comment "Integrated TiN/HZO/TiN ferroelectric capacitor stack unit." ;
+                             rdfs:label "MIM Ferroelectric Capacitor" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/PUND_Polarization_Test
+:PUND_Polarization_Test rdf:type owl:NamedIndividual ,
+                                 :ElectricalCharacterization ;
+                        :validates :MIM_Ferroelectric_Capacitor ;
+                        rdfs:comment "Positive Up Negative Down pulse testing measuring remnant polarization (Pr)." ;
+                        rdfs:label "PUND Polarization Test" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Packaged_FeRAM_Chip
+:Packaged_FeRAM_Chip rdf:type owl:NamedIndividual ,
+                              :Ferroelectric_Memory ;
+                     rdfs:comment "Completed and tested packaged FeRAM memory integrated circuit." ;
+                     rdfs:label "Packaged FeRAM Chip" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/RTA_Furnace_Annealer
+:RTA_Furnace_Annealer rdf:type owl:NamedIndividual ,
+                               :Furnace ;
+                      rdfs:comment "Rapid Thermal Annealing (RTA) single-wafer tool." ;
+                      rdfs:label "RTA Furnace Annealer" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_01_Wafer_Clean
+:Run_01_Wafer_Clean rdf:type owl:NamedIndividual ,
+                             :Wafer_Cleaning ;
+                    :followedBy :Run_02_Substrate_Doping ;
+                    :usesMaterial :Silicon_Substrate_01 ;
+                    rdfs:comment "Initial wet RCA chemical clean of silicon base wafer." ;
+                    rdfs:label "Run 01 Wafer Clean" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_02_Substrate_Doping
+:Run_02_Substrate_Doping rdf:type owl:NamedIndividual ,
+                                  :Implantation ;
+                         :followedBy :Run_03_BE_TiN_Sputter ;
+                         rdfs:comment "Ion implantation step setting active silicon substrate well regions." ;
+                         rdfs:label "Run 02 Substrate Doping" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_03_BE_TiN_Sputter
+:Run_03_BE_TiN_Sputter rdf:type owl:NamedIndividual ,
+                                :Electrode_Deposition ;
+                       :depositsMaterial :TiN_Bottom_Electrode ;
+                       :followedBy :Run_04_HZO_ALD_Growth ;
+                       :formsOutputPart :MIM_Ferroelectric_Capacitor ;
+                       :usesEquipment :AppliedMaterials_PVD_Sputter ;
+                       rdfs:comment "Sputter deposition of bottom electrode TiN layer." ;
+                       rdfs:label "Run 03 BE TiN Sputter" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_04_HZO_ALD_Growth
+:Run_04_HZO_ALD_Growth rdf:type owl:NamedIndividual ,
+                                :HfO2_Deposition ;
+                       :depositsMaterial :HZO_Film_10nm ;
+                       :followedBy :Run_05_TE_TiN_Sputter ;
+                       :formsOutputPart :MIM_Ferroelectric_Capacitor ;
+                       :usesEquipment :Beneq_ALD_Cluster_01 ;
+                       rdfs:comment "Atomic layer deposition of 10nm HZO ferroelectric film." ;
+                       rdfs:label "Run 04 HZO ALD Growth" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_05_TE_TiN_Sputter
+:Run_05_TE_TiN_Sputter rdf:type owl:NamedIndividual ,
+                                :Electrode_Deposition ;
+                       :depositsMaterial :TiN_Top_Electrode ;
+                       :followedBy :Run_06_RTA_Crystallization ;
+                       :formsOutputPart :MIM_Ferroelectric_Capacitor ;
+                       :usesEquipment :AppliedMaterials_PVD_Sputter ;
+                       rdfs:comment "Sputter deposition of top electrode TiN layer." ;
+                       rdfs:label "Run 05 TE TiN Sputter" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_06_RTA_Crystallization
+:Run_06_RTA_Crystallization rdf:type owl:NamedIndividual ,
+                                     :Annealing ;
+                            :followedBy :Run_07_Capacitor_Litho ;
+                            :modifiesOutputPart :MIM_Ferroelectric_Capacitor ;
+                            :usesEquipment :RTA_Furnace_Annealer ;
+                            rdfs:comment "Rapid thermal annealing to induce orthorhombic ferroelectric phase formation." ;
+                            rdfs:label "Run 06 RTA Crystallization" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_07_Capacitor_Litho
+:Run_07_Capacitor_Litho rdf:type owl:NamedIndividual ,
+                                 :Lithography ;
+                        :followedBy :Run_08_Capacitor_Pattern_Etch ;
+                        :usesEquipment :ASML_EUV_Stepper ;
+                        :usesMaterial :EUV_Photoresist_Positive ;
+                        rdfs:comment "Photolithographic patterning defining top capacitor pillar areas." ;
+                        rdfs:label "Run 07 Capacitor Litho" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_08_Capacitor_Pattern_Etch
+:Run_08_Capacitor_Pattern_Etch rdf:type owl:NamedIndividual ,
+                                        :Metallization ;
+                               :followedBy :Run_09_Final_Parametric_Test ;
+                               :formsOutputPart :Single_1T1C_Bit_Cell ;
+                               :usesEquipment :Lam_Research_RIE_Etcher ;
+                               rdfs:comment "Reactive ion etching step patterning the MIM stack structures." ;
+                               rdfs:label "Run 08 Capacitor Pattern Etch" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Run_09_Final_Parametric_Test
+:Run_09_Final_Parametric_Test rdf:type owl:NamedIndividual ,
+                                       :Testing ;
+                              :produces :Packaged_FeRAM_Chip ;
+                              rdfs:comment "Final wafer-level parametric electrical verification test." ;
+                              rdfs:label "Run 09 Final Parametric Test" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/SE_Film_Thickness_Measurement
+:SE_Film_Thickness_Measurement rdf:type owl:NamedIndividual ,
+                                        :PhysicalMetrology ;
+                               :characterizesStep :Run_04_HZO_ALD_Growth ;
+                               rdfs:comment "Spectroscopic Ellipsometry measurement verifying HZO film thickness." ;
+                               rdfs:label "SE Film Thickness Measurement" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/SiO2_ILD_Passivation
+:SiO2_ILD_Passivation rdf:type owl:NamedIndividual ,
+                               :DielectricMaterial ;
+                      rdfs:comment "Silicon dioxide inter-layer dielectric isolation film." ;
+                      rdfs:label "SiO2 ILD Passivation" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Silicon_Substrate_01
+:Silicon_Substrate_01 rdf:type owl:NamedIndividual ,
+                               :SubstrateMaterial ;
+                      rdfs:comment "Standard p-type Si (100) base substrate wafer." ;
+                      rdfs:label "Silicon Substrate 01" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/Single_1T1C_Bit_Cell
+:Single_1T1C_Bit_Cell rdf:type owl:NamedIndividual ,
+                               :Memory_Cell ;
+                      :isPartOfOutput :Array_64Kb_FeRAM ;
+                      rdfs:comment "Functional 1-Transistor 1-Capacitor FeRAM cell unit." ;
+                      rdfs:label "Single 1T1C Bit Cell" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/TiN_Bottom_Electrode
+:TiN_Bottom_Electrode rdf:type owl:NamedIndividual ,
+                               :ElectrodeMaterial ;
+                      rdfs:comment "Sputtered Titanium Nitride bottom electrode plate." ;
+                      rdfs:label "TiN Bottom Electrode" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/TiN_Top_Electrode
+:TiN_Top_Electrode rdf:type owl:NamedIndividual ,
+                            :ElectrodeMaterial ;
+                   rdfs:comment "Sputtered Titanium Nitride top electrode plate." ;
+                   rdfs:label "TiN Top Electrode" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/W_Plug_Material
+:W_Plug_Material rdf:type owl:NamedIndividual ,
+                          :ElectrodeMaterial ;
+                 rdfs:comment "Tungsten metallization plug for vertical interconnects." ;
+                 rdfs:label "W Plug Material" .
+
+
+###  http://www.semanticweb.org/oltipc/ontologies/2026/7/FeRAM-formalling/XRD_Phase_Identification
+:XRD_Phase_Identification rdf:type owl:NamedIndividual ,
+                                   :PhysicalMetrology ;
+                          :characterizesMaterial :HZO_Film_10nm ;
+                          rdfs:comment "X-Ray Diffraction measuring orthorhombic phase ratio in the HZO layer." ;
+                          rdfs:label "XRD Phase Identification" .
+
 
 #################################################################
-#    Named Individuals
+#    General axioms
 #################################################################
 
-### Materials
-:Silicon_Substrate_01 a owl:NamedIndividual, :SubstrateMaterial ;
-    rdfs:label "Silicon Substrate 01" ;
-    rdfs:comment "Standard p-type Si (100) base substrate wafer." .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :ALDSystem
+                :CMPTool
+                :Etcher
+                :Furnace
+                :LithographyTool
+                :PVDSystem
+              )
+] .
 
-:HZO_Film_10nm a owl:NamedIndividual, :FerroelectricMaterial ;
-    rdfs:label "HZO Film 10nm" ;
-    rdfs:comment "10nm Hafnium Zirconium Oxide (Hf0.5Zr0.5O2) ferroelectric thin film." .
 
-:La_doped_HfO2 a owl:NamedIndividual, :FerroelectricMaterial ;
-    rdfs:label "La Doped HfO2" ;
-    rdfs:comment "Lanthanum-doped HfO2 film for improved endurance." .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Annealing
+                :CMP_Step
+                :Deposition_Step
+                :Etch_Step
+                :Implantation
+                :Lithography
+                :Metallization
+                :Oxidation
+                :Testing
+                :Wafer_Cleaning
+              )
+] .
 
-:TiN_Bottom_Electrode a owl:NamedIndividual, :ElectrodeMaterial ;
-    rdfs:label "TiN Bottom Electrode" ;
-    rdfs:comment "Sputtered Titanium Nitride bottom electrode plate." .
 
-:TiN_Top_Electrode a owl:NamedIndividual, :ElectrodeMaterial ;
-    rdfs:label "TiN Top Electrode" ;
-    rdfs:comment "Sputtered Titanium Nitride top electrode plate." .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Capacitor_Stack
+                :Ferroelectric_Memory
+                :Memory_Array
+                :Memory_Cell
+              )
+] .
 
-:W_Plug_Material a owl:NamedIndividual, :ElectrodeMaterial ;
-    rdfs:label "W Plug Material" ;
-    rdfs:comment "Tungsten metallization plug for vertical interconnects." .
 
-:SiO2_ILD_Passivation a owl:NamedIndividual, :DielectricMaterial ;
-    rdfs:label "SiO2 ILD Passivation" ;
-    rdfs:comment "Silicon dioxide inter-layer dielectric isolation film." .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :DielectricMaterial
+                :ElectrodeMaterial
+                :FerroelectricMaterial
+                :PhotoresistMaterial
+                :SemiconductorMaterial
+                :SubstrateMaterial
+              )
+] .
 
-:Al2O3_Capping_Layer a owl:NamedIndividual, :DielectricMaterial ;
-    rdfs:label "Al2O3 Capping Layer" ;
-    rdfs:comment "Thin aluminum oxide protective oxygen-barrier layer." .
 
-:EUV_Photoresist_Positive a owl:NamedIndividual, :PhotoresistMaterial ;
-    rdfs:label "EUV Photoresist Positive" ;
-    rdfs:comment "Positive tone EUV photoresist material." .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Equipment
+                :Material
+                :Output
+                :Process_Steps
+                :Quality_Check
+              )
+] .
 
-### Equipment
-:Beneq_ALD_Cluster_01 a owl:NamedIndividual, :ALDSystem ;
-    rdfs:label "Beneq ALD Cluster 01" ;
-    rdfs:comment "Thermal and plasma-assisted atomic layer deposition cluster system." .
-
-:AppliedMaterials_PVD_Sputter a owl:NamedIndividual, :PVDSystem ;
-    rdfs:label "Applied Materials PVD Sputter" ;
-    rdfs:comment "Magnetron sputtering PVD tool for conductive electrode films." .
-
-:Lam_Research_RIE_Etcher a owl:NamedIndividual, :Etcher ;
-    rdfs:label "Lam Research RIE Etcher" ;
-    rdfs:comment "Anisotropic reactive ion etching system." .
-
-:RTA_Furnace_Annealer a owl:NamedIndividual, :Furnace ;
-    rdfs:label "RTA Furnace Annealer" ;
-    rdfs:comment "Rapid Thermal Annealing (RTA) single-wafer tool." .
-
-:ASML_EUV_Stepper a owl:NamedIndividual, :LithographyTool ;
-    rdfs:label "ASML EUV Stepper" ;
-    rdfs:comment "Extreme Ultraviolet (EUV) photolithography exposure tool." .
-
-:AppliedMaterials_CMP_Polisher a owl:NamedIndividual, :CMPTool ;
-    rdfs:label "Applied Materials CMP Polisher" ;
-    rdfs:comment "Chemical mechanical planarization wafer polisher." .
-
-### Output Components
-:MIM_Ferroelectric_Capacitor a owl:NamedIndividual, :Capacitor_Stack ;
-    rdfs:label "MIM Ferroelectric Capacitor" ;
-    rdfs:comment "Integrated TiN/HZO/TiN ferroelectric capacitor stack unit." ;
-    :isPartOfOutput :Single_1T1C_Bit_Cell .
-
-:Single_1T1C_Bit_Cell a owl:NamedIndividual, :Memory_Cell ;
-    rdfs:label "Single 1T1C Bit Cell" ;
-    rdfs:comment "Functional 1-Transistor 1-Capacitor FeRAM cell unit." ;
-    :isPartOfOutput :Array_64Kb_FeRAM .
-
-:Array_64Kb_FeRAM a owl:NamedIndividual, :Memory_Array ;
-    rdfs:label "Array 64Kb FeRAM" ;
-    rdfs:comment "64-Kilobit addressable memory bit array." ;
-    :isPartOfOutput :Packaged_FeRAM_Chip .
-
-:Packaged_FeRAM_Chip a owl:NamedIndividual, :Ferroelectric_Memory ;
-    rdfs:label "Packaged FeRAM Chip" ;
-    rdfs:comment "Completed and tested packaged FeRAM memory integrated circuit." .
-
-### Process Steps
-:Run_01_Wafer_Clean a owl:NamedIndividual, :Wafer_Cleaning ;
-    rdfs:label "Run 01 Wafer Clean" ;
-    rdfs:comment "Initial wet RCA chemical clean of silicon base wafer." ;
-    :usesMaterial :Silicon_Substrate_01 ;
-    :followedBy :Run_02_Substrate_Doping .
-
-:Run_02_Substrate_Doping a owl:NamedIndividual, :Implantation ;
-    rdfs:label "Run 02 Substrate Doping" ;
-    rdfs:comment "Ion implantation step setting active silicon substrate well regions." ;
-    :followedBy :Run_03_BE_TiN_Sputter .
-
-:Run_03_BE_TiN_Sputter a owl:NamedIndividual, :Electrode_Deposition ;
-    rdfs:label "Run 03 BE TiN Sputter" ;
-    rdfs:comment "Sputter deposition of bottom electrode TiN layer." ;
-    :usesEquipment :AppliedMaterials_PVD_Sputter ;
-    :depositsMaterial :TiN_Bottom_Electrode ;
-    :formsOutputPart :MIM_Ferroelectric_Capacitor ;
-    :followedBy :Run_04_HZO_ALD_Growth .
-
-:Run_04_HZO_ALD_Growth a owl:NamedIndividual, :HfO2_Deposition ;
-    rdfs:label "Run 04 HZO ALD Growth" ;
-    rdfs:comment "Atomic layer deposition of 10nm HZO ferroelectric film." ;
-    :usesEquipment :Beneq_ALD_Cluster_01 ;
-    :depositsMaterial :HZO_Film_10nm ;
-    :formsOutputPart :MIM_Ferroelectric_Capacitor ;
-    :followedBy :Run_05_TE_TiN_Sputter .
-
-:Run_05_TE_TiN_Sputter a owl:NamedIndividual, :Electrode_Deposition ;
-    rdfs:label "Run 05 TE TiN Sputter" ;
-    rdfs:comment "Sputter deposition of top electrode TiN layer." ;
-    :usesEquipment :AppliedMaterials_PVD_Sputter ;
-    :depositsMaterial :TiN_Top_Electrode ;
-    :formsOutputPart :MIM_Ferroelectric_Capacitor ;
-    :followedBy :Run_06_RTA_Crystallization .
-
-:Run_06_RTA_Crystallization a owl:NamedIndividual, :Annealing ;
-    rdfs:label "Run 06 RTA Crystallization" ;
-    rdfs:comment "Rapid thermal annealing to induce orthorhombic ferroelectric phase formation." ;
-    :usesEquipment :RTA_Furnace_Annealer ;
-    :modifiesOutputPart :MIM_Ferroelectric_Capacitor ;
-    :followedBy :Run_07_Capacitor_Litho .
-
-:Run_07_Capacitor_Litho a owl:NamedIndividual, :Lithography ;
-    rdfs:label "Run 07 Capacitor Litho" ;
-    rdfs:comment "Photolithographic patterning defining top capacitor pillar areas." ;
-    :usesEquipment :ASML_EUV_Stepper ;
-    :usesMaterial :EUV_Photoresist_Positive ;
-    :followedBy :Run_08_Capacitor_Pattern_Etch .
-
-:Run_08_Capacitor_Pattern_Etch a owl:NamedIndividual, :Metallization ;
-    rdfs:label "Run 08 Capacitor Pattern Etch" ;
-    rdfs:comment "Reactive ion etching step patterning the MIM stack structures." ;
-    :usesEquipment :Lam_Research_RIE_Etcher ;
-    :formsOutputPart :Single_1T1C_Bit_Cell ;
-    :followedBy :Run_09_Final_Parametric_Test .
-
-:Run_09_Final_Parametric_Test a owl:NamedIndividual, :Testing ;
-    rdfs:label "Run 09 Final Parametric Test" ;
-    rdfs:comment "Final wafer-level parametric electrical verification test." ;
-    :produces :Packaged_FeRAM_Chip .
-
-### Quality Checks
-:SE_Film_Thickness_Measurement a owl:NamedIndividual, :PhysicalMetrology ;
-    rdfs:label "SE Film Thickness Measurement" ;
-    rdfs:comment "Spectroscopic Ellipsometry measurement verifying HZO film thickness." ;
-    :characterizesStep :Run_04_HZO_ALD_Growth .
-
-:XRD_Phase_Identification a owl:NamedIndividual, :PhysicalMetrology ;
-    rdfs:label "XRD Phase Identification" ;
-    rdfs:comment "X-Ray Diffraction measuring orthorhombic phase ratio in the HZO layer." ;
-    :characterizesMaterial :HZO_Film_10nm .
-
-:PUND_Polarization_Test a owl:NamedIndividual, :ElectricalCharacterization ;
-    rdfs:label "PUND Polarization Test" ;
-    rdfs:comment "Positive Up Negative Down pulse testing measuring remnant polarization (Pr)." ;
-    :validates :MIM_Ferroelectric_Capacitor .
-
-:C_V_Capacitance_Measurement a owl:NamedIndividual, :ElectricalCharacterization ;
-    rdfs:label "C-V Capacitance Measurement" ;
-    rdfs:comment "Capacitance-Voltage sweep verifying dielectric constant and switching voltage." ;
-    :validates :Single_1T1C_Bit_Cell .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

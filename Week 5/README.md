@@ -1,41 +1,18 @@
-# 🚀 Project Title
-
-Manufacturing Process Flow Ontology for CMOS Steps in FeRAM production processs
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Build](https://img.shields.io/badge/build-passing-brightgreen)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange)
-
+# Manufacturing Process Flow Ontology for CMOS Steps in FeRAM production processs
 
 ## Description
 
-Provide a detailed overview of your project here. Explain the core problem it solves, why you built it, and how it benefits developers or users.
+This ontology formalizes manufacturing process flow of CMOS Steps in FeRAM production. 
+In the 1T1C architecture, the CMOS transistor acts as the access or selection
+device, while the ferroelectric capacitor (FeCAP) provides the non-volatile storage element.
 
-### ✨ Key Features
-- ⚡ **High Performance:** Optimized for speed and minimal memory footprint.
-- 🛠️ **Modular Architecture:** Easily extendable plugins and core components.
-- 🔒 **Secure by Default:** Built-in authentication and encryption standard.
-- 🌐 **Cross-Platform:** Runs seamlessly on Linux, macOS, and Windows.
+### Visualization
+https://service.tib.eu/webvowl/#iri=https://raw.githubusercontent.com/oltikrasniqi21/Olti_Krasniqi-Ontology-Development/refs/heads/main/Week%205/FeRAM%20Formalling.ttl
 
-### 🛠️ Built With
-- [Python 3.11+](https://python.org) - Core backend language
-- [FastAPI](https://fastapi.tiangolo.com) - High-performance web framework
-- [PostgreSQL](https://postgresql.org) - Relational database engine
-- [Docker](https://docker.com) - Containerization & deployment
+## Ontology Details
+* Built in: Protégé
+* Syntax: Turtle / OWL 2
 
----
-
-## 🚀 Getting Started
-
-Follow these instructions to get a local copy up and running on your machine for development and testing purposes.
-
-### 📋 Prerequisites
-Ensure you have the following installed before proceeding:
-
-```bash
-# Check Python Version
-python --version  # Should be 3.10 or higher
-
-# Check Git Installation
-git --version
+## References
+* W3C OWL Working Group (2012). OWL 2 Web Ontology Language Document Overview. https://www.w3.org/TR/owl2-overview/
+* W3C SPARQL 1.2 Query Language. https://www.w3.org/TR/sparql12-query/
